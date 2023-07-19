@@ -1,5 +1,4 @@
-import React, { useContext, useState } from "react";
-import { TwitchAuth } from "./TwitchAuth.jsx";
+import React, { useState } from "react";
 
 import classNames from "classnames";
 import { Server } from "@qwhub/servers/Server.jsx";
@@ -8,18 +7,15 @@ import {
   useGetStreamsQuery,
 } from "@qwhub/services/hub/hub.js";
 
-function VideoOverlayApp() {
+function VideoOverlayApp({ channelId }) {
   const [isActive, setIsActive] = useState(true);
-  const { isLoading, isError, auth } = useContext(TwitchAuth);
-  const { data: streams = [] } = useGetStreamsQuery();
-  const currentStream = streams.find((s) => s.id === auth.channelId);
+  const { data: streams = [], isLoading, isError } = useGetStreamsQuery();
+  const currentStream = streams.find((s) => s.id === channelId);
 
   if (isLoading) {
     return <div>loading..</div>;
   } else if (isError) {
     return <div>error..</div>;
-  } else if (!auth) {
-    return <div>unable to get auth info..</div>;
   } else if (!currentStream) {
     return <div>unable to get stream info..</div>;
   }
