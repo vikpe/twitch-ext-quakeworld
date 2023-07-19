@@ -1,0 +1,3 @@
+[submodule "src/hub"]
+	path = src/hub
+	url = git@github.com:quakeworldnu/hub.quakeworld.nu.git

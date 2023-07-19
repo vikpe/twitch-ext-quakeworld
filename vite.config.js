@@ -16,7 +16,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      "@": resolve(__dirname, "./src"),
+      "@qwhub": resolve(__dirname, "./src/hub/src"),
     },
   },
 });

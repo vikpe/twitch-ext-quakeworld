@@ -17,9 +17,6 @@ dependencies:
   copy-text-to-clipboard:
     specifier: ^3.2.0
     version: 3.2.0
-  ky:
-    specifier: ^0.33.3
-    version: 0.33.3
   postcss:
     specifier: ^8.4.26
     version: 8.4.26
@@ -966,11 +963,6 @@ packages:
     engines: {node: '>=6'}
     hasBin: true
     dev: true
-
-  /ky@0.33.3:
-    resolution: {integrity: sha512-CasD9OCEQSFIam2U8efFK81Yeg8vNMTBUqtMOHlrcWQHqUX3HeCl9Dr31u4toV7emlH8Mymk5+9p0lL6mKb/Xw==}
-    engines: {node: '>=14.16'}
-    dev: false
 
   /lilconfig@2.1.0:
     resolution: {integrity: sha512-utWOt/GHzuUxnLKxB6dk81RoOeoNeHgbrXiuGk4yyF5qlRz+iIVWu56E2fqGHFrXz0QNUhLB/8nKqvRH66JKGQ==}
