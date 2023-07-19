@@ -1,6 +1,6 @@
 {
-  "name": "twitch-quakeworld-server",
-  "repository": "https://github.com/vikpe/twitch-quakeworld-server",
+  "name": "twitch-quakeworld",
+  "repository": "https://github.com/vikpe/twitch-quakeworld",
   "version": "0.1.0",
   "type": "module",
   "scripts": {

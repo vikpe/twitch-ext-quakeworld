@@ -1,2 +1,2 @@
-# QuakeWorld Server
-> Twitch extension displaying server information
+# Twitch QuakeWorld
+> Extension displaying QuakeWorld server information
