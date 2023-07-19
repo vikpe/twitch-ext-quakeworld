@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from "react";
 
 function getDefaultContext() {
   return {
@@ -10,9 +10,9 @@ function getDefaultContext() {
       clientId: "",
       helixToken: "",
       token: "",
-      userId: ""
-    }
-  }
+      userId: "",
+    },
+  };
 }
 
 export const TwitchAuth = createContext(getDefaultContext());
@@ -27,14 +27,12 @@ export const TwitchAuthProvider = ({ children }) => {
         isLoading: false,
         isSuccess,
         isError: !isSuccess,
-        auth
-      })
+        auth,
+      });
     });
-  }, [])
+  }, []);
 
-  return (
-    <TwitchAuth.Provider value={auth}>{children}</TwitchAuth.Provider>
-  )
-}
+  return <TwitchAuth.Provider value={auth}>{children}</TwitchAuth.Provider>;
+};
 
 //const url = `https://api.twitch.tv/helix/channels?broadcaster_id=${auth.channelId}`;
