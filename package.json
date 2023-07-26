@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=https://hub.quakeworld.nu/ && sed -i 's#https://hub.quakeworld.nu#.#g' dist/video_overlay.html",
+    "build": "vite build --base=https://hub.quakeworld.nu/",
+    "release": "yarn build && sed -i 's#https://hub.quakeworld.nu#.#g' dist/video_overlay.html && cd dist && zip -r dist.zip . && mv dist.zip ..",
     "preview": "vite preview --port 5173",
     "format": "prettier --write src"
   },
