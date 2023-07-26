@@ -10,7 +10,13 @@ import {
 function VideoOverlayApp({ channelId }) {
   const [isActive, setIsActive] = useState(true);
   const [isMinimized, setIsMinimized] = useState(false);
-  const { data: streams = [], isLoading, isError } = useGetStreamsQuery();
+  const {
+    data: streams = [],
+    isLoading,
+    isError,
+  } = useGetStreamsQuery({
+    pollingInterval: 10 * 1000,
+  });
   const currentStream = streams.find((s) => s.id === channelId);
 
   if (isLoading) {
