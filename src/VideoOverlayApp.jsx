@@ -97,8 +97,8 @@ export default VideoOverlayApp;
 
 function ServerTile({ address }) {
   const { data: server, isSuccess } = useGetServerQuery(address, {
-    pollingInterval: 5 * 1000,
     refetchOnMountOrArgChange: true,
+    pollingInterval: 5 * 1000,
   });
 
   if (!isSuccess) {
