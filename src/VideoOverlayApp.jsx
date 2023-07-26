@@ -10,23 +10,6 @@ import {
 function VideoOverlayApp({ channelId }) {
   const [isActive, setIsActive] = useState(true);
   const [isMinimized, setIsMinimized] = useState(false);
-  const {
-    data: streams = [],
-    isLoading,
-    isError,
-  } = useGetStreamsQuery({
-    pollingInterval: 10 * 1000,
-    refetchOnMountOrArgChange: true,
-  });
-  const currentStream = streams.find((s) => s.id === channelId);
-
-  if (isLoading) {
-    return <div>loading..</div>;
-  } else if (isError) {
-    return <div>error..</div>;
-  } else if (!currentStream) {
-    return <div>unable to get stream info..</div>;
-  }
 
   function onMouseOver() {
     setIsActive(true);
@@ -82,10 +65,7 @@ function VideoOverlayApp({ channelId }) {
         </div>
         {isActive && isMaximized && (
           <div className="flex w-[480px]">
-            <ServerTile
-              address={currentStream.server_address}
-              isActive={isActive}
-            />
+            <ServerByTwitchChannelId channelId={channelId} />
           </div>
         )}
       </div>
@@ -95,17 +75,39 @@ function VideoOverlayApp({ channelId }) {
 
 export default VideoOverlayApp;
 
-function ServerTile({ address }) {
-  const { data: server, isSuccess } = useGetServerQuery(address, {
+function ServerByTwitchChannelId({ channelId }) {
+  const {
+    data: streams = [],
+    isLoading,
+    isError,
+  } = useGetStreamsQuery(null, {
+    pollingInterval: 5 * 10000,
     refetchOnMountOrArgChange: true,
+  });
+  const currentStream = streams.find((s) => s.id === channelId);
+
+  if (isLoading) {
+    return <div>loading..</div>;
+  } else if (isError) {
+    return <div>error..</div>;
+  } else if (!currentStream) {
+    return <div>unable to get stream info..</div>;
+  } else {
+    return <ServerByAddress address={currentStream.server_address} />;
+  }
+}
+
+function ServerByAddress({ address }) {
+  const { data: server, isSuccess } = useGetServerQuery(address, {
     pollingInterval: 5 * 1000,
+    refetchOnMountOrArgChange: true,
   });
 
   if (!isSuccess) {
-    return <></>;
+    return <div>unable to get server info..</div>;
+  } else {
+    return <Server server={server} />;
   }
-
-  return <Server server={server} />;
 }
 
 const ChevronUpIcon = () => (
