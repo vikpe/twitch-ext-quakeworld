@@ -16,6 +16,7 @@ function VideoOverlayApp({ channelId }) {
     isError,
   } = useGetStreamsQuery({
     pollingInterval: 10 * 1000,
+    refetchOnMountOrArgChange: true,
   });
   const currentStream = streams.find((s) => s.id === channelId);
 
