@@ -1,8 +1,11 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 import classNames from "classnames";
-import {Server} from "@qwhub/servers/Server.jsx";
-import {useGetServerQuery, useGetStreamsQuery,} from "@qwhub/services/hub/hub.js";
+import { Server } from "@qwhub/servers/Server.jsx";
+import {
+  useGetServerQuery,
+  useGetStreamsQuery,
+} from "@qwhub/services/hub/hub.js";
 
 function VideoOverlayApp({ channelId }) {
   const [isActive, setIsActive] = useState(true);
