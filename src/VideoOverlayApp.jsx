@@ -1,11 +1,8 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 
 import classNames from "classnames";
-import { Server } from "@qwhub/servers/Server.jsx";
-import {
-  useGetServerQuery,
-  useGetStreamsQuery,
-} from "@qwhub/services/hub/hub.js";
+import {Server} from "@qwhub/servers/Server.jsx";
+import {useGetServerQuery, useGetStreamsQuery,} from "@qwhub/services/hub/hub.js";
 
 function VideoOverlayApp({ channelId }) {
   const [isActive, setIsActive] = useState(true);
@@ -59,8 +56,11 @@ function VideoOverlayApp({ channelId }) {
         >
           {isMaximized && <div>Server info</div>}
           {isMinimized && <div className="text-lg">Show server info</div>}
-          <div className={classNames({ "rotate-180": isMaximized })}>
-            <ChevronUpIcon />
+          <div className="flex items-center">
+            {isMaximized && <span className="mr-2 text-sm">Hide</span>}
+            <div className={classNames({ "rotate-180": isMaximized })}>
+              <ChevronUpIcon />
+            </div>
           </div>
         </div>
         {isActive && isMaximized && (
