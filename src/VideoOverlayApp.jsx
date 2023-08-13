@@ -9,7 +9,7 @@ import {
 
 function VideoOverlayApp({ channelId }) {
   const [isActive, setIsActive] = useState(true);
-  const [isMinimized, setIsMinimized] = useState(false);
+  const [isMinimized, setIsMinimized] = useState(true);
 
   function onMouseOver() {
     setIsActive(true);
