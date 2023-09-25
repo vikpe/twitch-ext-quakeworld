@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useIdle } from "@uidotdev/usehooks";
 
 import classNames from "classnames";
 import { Server } from "@qwhub/servers/Server.jsx";
@@ -7,9 +8,18 @@ import {
   useGetStreamsQuery,
 } from "@qwhub/services/hub/hub.js";
 
+const IDLE_TIMEOUT = 1500;
+
 function VideoOverlayApp({ channelId }) {
   const [isActive, setIsActive] = useState(true);
   const [isMinimized, setIsMinimized] = useState(true);
+  const isIdle = useIdle(IDLE_TIMEOUT);
+
+  useEffect(() => {
+    if (isMinimized && isActive && isIdle) {
+      setIsActive(false);
+    }
+  }, [isIdle]);
 
   function onMouseOver() {
     setIsActive(true);
