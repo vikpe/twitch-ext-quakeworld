@@ -42,45 +42,47 @@ function VideoOverlayApp({ channelId }) {
   const isMaximized = !isMinimized;
 
   return (
-    <div
-      className={classNames("h-full flex justify-center py-20 px-28", {
-        "opacity-100": isActive,
-        "opacity-0": !isActive,
-        "items-center": isMaximized,
-        "items-end": isMinimized,
-      })}
-      onMouseOut={onMouseOut}
-      onMouseOver={onMouseOver}
-      onMouseMove={onMouseMove}
-    >
+    <div className="h-full p-[5%]">
       <div
-        className={classNames({
-          "border border-black": isMaximized,
+        className={classNames("flex h-full justify-center", {
+          "opacity-100": isActive,
+          "opacity-0": !isActive,
+          "items-center": isMaximized,
+          "items-end": isMinimized,
         })}
+        onMouseOut={onMouseOut}
+        onMouseOver={onMouseOver}
+        onMouseMove={onMouseMove}
       >
         <div
-          className={classNames(
-            "flex items-center justify-between space-x-4 py-2 px-3 cursor-pointer bg-black hover:bg-gray-900 text-gray-300 hover:text-white",
-            {
-              "border-2 border-sky-600 rounded-lg": isMinimized,
-            },
-          )}
-          onClick={toggleMinimized}
+          className={classNames({
+            "border border-black": isMaximized,
+          })}
         >
-          {isMaximized && <div>Server info</div>}
-          {isMinimized && <div className="text-lg">Show server info</div>}
-          <div className="flex items-center">
-            {isMaximized && <span className="mr-2 text-sm">Hide</span>}
-            <div className={classNames({ "rotate-180": isMaximized })}>
-              <ChevronUpIcon />
+          <div
+            className={classNames(
+              "flex items-center justify-between space-x-4 py-2 px-3 cursor-pointer bg-black hover:bg-gray-900 text-gray-300 hover:text-white",
+              {
+                "border-2 border-sky-600 rounded-lg": isMinimized,
+              },
+            )}
+            onClick={toggleMinimized}
+          >
+            {isMaximized && <div>Server info</div>}
+            {isMinimized && <div className="text-lg">Show server info</div>}
+            <div className="flex items-center">
+              {isMaximized && <span className="mr-2 text-sm">Hide</span>}
+              <div className={classNames({ "rotate-180": isMaximized })}>
+                <ChevronUpIcon />
+              </div>
             </div>
           </div>
+          {isActive && isMaximized && (
+            <div className="flex w-[480px]">
+              <ServerByTwitchChannelId channelId={channelId} />
+            </div>
+          )}
         </div>
-        {isActive && isMaximized && (
-          <div className="flex w-[480px]">
-            <ServerByTwitchChannelId channelId={channelId} />
-          </div>
-        )}
       </div>
     </div>
   );
