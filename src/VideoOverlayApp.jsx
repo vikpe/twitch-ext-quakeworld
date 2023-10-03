@@ -68,10 +68,10 @@ function VideoOverlayApp({ channelId }) {
             )}
             onClick={toggleMinimized}
           >
-            {isMaximized && <div>Server info</div>}
-            {isMinimized && <div className="text-lg">Show server info</div>}
+            {isMaximized && <div className="select-none">Server info</div>}
+            {isMinimized && <div className="text-lg select-none">Show server info</div>}
             <div className="flex items-center">
-              {isMaximized && <span className="mr-2 text-sm">Hide</span>}
+              {isMaximized && <span className="mr-2 text-sm select-none">Hide</span>}
               <div className={classNames({ "rotate-180": isMaximized })}>
                 <ChevronUpIcon />
               </div>
